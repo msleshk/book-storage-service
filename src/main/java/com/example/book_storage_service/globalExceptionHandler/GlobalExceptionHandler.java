@@ -17,12 +17,6 @@ public class GlobalExceptionHandler {
         return Map.of("error", exception.getMessage());
     }
 
-//    @ExceptionHandler(UserAlreadyExistsException.class)
-//    @ResponseStatus(HttpStatus.CONFLICT)
-//    public Map<String, String> handleUserAlreadyExistsException(UserAlreadyExistsException exception) {
-//        return Map.of("error", exception.getMessage());
-//    }
-
     @ExceptionHandler(ValidationException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public Map<String, String> handleValidationException(ValidationException exception) {

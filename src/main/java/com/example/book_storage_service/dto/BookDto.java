@@ -1,13 +1,15 @@
 package com.example.book_storage_service.dto;
 
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Pattern;
 
 public class BookDto {
 
     private Long id;
-    // add pattern annotation
-    @NotEmpty(message = "Isbn cannot be empty")
+    @Pattern(regexp = "\\d{3}-\\d-\\d{2}-\\d{6}-\\d", message = "ISBN must follow the format 000-0-00-000000-0")
+    @NotEmpty(message = "ISBN cannot be empty")
     private String isbn;
+
 
     @NotEmpty(message = "Title cannot be empty")
     private String title;
