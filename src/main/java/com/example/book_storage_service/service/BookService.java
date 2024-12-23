@@ -1,7 +1,6 @@
 package com.example.book_storage_service.service;
 
 import com.example.book_storage_service.dto.BookDto;
-import com.example.book_storage_service.model.Book;
 
 import java.util.List;
 

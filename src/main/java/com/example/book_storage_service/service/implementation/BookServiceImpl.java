@@ -3,13 +3,13 @@ package com.example.book_storage_service.service.implementation;
 import com.example.book_storage_service.dto.BookDto;
 import com.example.book_storage_service.exceptions.BookNotFoundException;
 import com.example.book_storage_service.feign.BookTrackerFeignClient;
+import com.example.book_storage_service.model.Book;
 import com.example.book_storage_service.repository.BookRepository;
 import com.example.book_storage_service.service.BookService;
 import com.example.book_storage_service.util.Mapper;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import com.example.book_storage_service.model.Book;
 
 import java.util.List;
 import java.util.stream.Collectors;

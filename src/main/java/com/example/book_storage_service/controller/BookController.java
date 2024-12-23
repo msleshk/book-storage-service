@@ -7,11 +7,12 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import jakarta.validation.ValidationException;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import io.swagger.v3.oas.annotations.tags.Tag;
+
 import java.util.List;
 
 @RestController
@@ -30,7 +31,7 @@ public class BookController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Book found", content = @Content(schema = @Schema(implementation = BookDto.class))),
     })
-    public BookDto getBookById(@PathVariable("id") Long bookId){
+    public BookDto getBookById(@PathVariable("id") Long bookId) {
         return bookService.getBookById(bookId);
     }
 
@@ -40,7 +41,7 @@ public class BookController {
             @ApiResponse(responseCode = "200", description = "Book found", content = @Content(schema = @Schema(implementation = BookDto.class))),
             @ApiResponse(responseCode = "404", description = "Book not found")
     })
-    public BookDto getBookByIsbn(@PathVariable("isbn") String isbn){
+    public BookDto getBookByIsbn(@PathVariable("isbn") String isbn) {
         return bookService.getBookByIsbn(isbn);
     }
 
@@ -49,7 +50,7 @@ public class BookController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "List of books", content = @Content(schema = @Schema(implementation = BookDto.class)))
     })
-    public List<BookDto> getAllBooks(){
+    public List<BookDto> getAllBooks() {
         return bookService.getAllBooks();
     }
 
@@ -59,8 +60,8 @@ public class BookController {
             @ApiResponse(responseCode = "200", description = "Book successfully updated"),
             @ApiResponse(responseCode = "400", description = "Validation error in the request")
     })
-    public String updateBook(@PathVariable("id") Long bookId, @RequestBody @Valid BookDto bookDto, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public String updateBook(@PathVariable("id") Long bookId, @RequestBody @Valid BookDto bookDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             throw new ValidationException(bindingResult.getAllErrors().toString());
         }
         bookService.updateBook(bookId, bookDto);
@@ -73,7 +74,7 @@ public class BookController {
             @ApiResponse(responseCode = "200", description = "Book successfully deleted"),
             @ApiResponse(responseCode = "404", description = "Book not found")
     })
-    public String deleteBook(@PathVariable("id") Long bookId){
+    public String deleteBook(@PathVariable("id") Long bookId) {
         bookService.deleteBookById(bookId);
         return "Book deleted successfully";
     }
@@ -83,8 +84,8 @@ public class BookController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Book added successfully")
     })
-    public String addBook(@RequestBody @Valid BookDto bookDto, BindingResult bindingResult){
-        if (bindingResult.hasErrors()){
+    public String addBook(@RequestBody @Valid BookDto bookDto, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
             throw new ValidationException(bindingResult.getAllErrors().toString());
         }
         bookService.addBook(bookDto);

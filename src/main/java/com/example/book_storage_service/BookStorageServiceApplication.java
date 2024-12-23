@@ -8,8 +8,8 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 @EnableFeignClients(basePackages = "com.example.book_storage_service.feign")
 public class BookStorageServiceApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(BookStorageServiceApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(BookStorageServiceApplication.class, args);
+    }
 
 }

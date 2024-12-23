@@ -23,6 +23,17 @@ public class BookDto {
     @NotEmpty(message = "Author cannot be empty")
     private String author;
 
+    public BookDto() {
+    }
+
+    public BookDto(String isbn, String title, String genre, String description, String author) {
+        this.isbn = isbn;
+        this.title = title;
+        this.genre = genre;
+        this.description = description;
+        this.author = author;
+    }
+
     public Long getId() {
         return id;
     }
